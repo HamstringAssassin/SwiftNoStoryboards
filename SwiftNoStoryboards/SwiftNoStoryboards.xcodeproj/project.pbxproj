@@ -97,12 +97,9 @@
 		6029EDCD1CD3D98500637B2C /* SwiftNoStoryboards */ = {
 			isa = PBXGroup;
 			children = (
-				6029EDCE1CD3D98500637B2C /* AppDelegate.swift */,
 				6029EDD01CD3D98500637B2C /* ViewController.swift */,
 				6029EDFC1CD3DD5C00637B2C /* ViewController.xib */,
-				6029EDD51CD3D98500637B2C /* Assets.xcassets */,
-				6029EDD71CD3D98500637B2C /* LaunchScreen.storyboard */,
-				6029EDDA1CD3D98500637B2C /* Info.plist */,
+				6029EDFF1CD3E18800637B2C /* Resources */,
 			);
 			path = SwiftNoStoryboards;
 			sourceTree = "<group>";
@@ -123,6 +120,17 @@
 				6029EDF01CD3D98500637B2C /* Info.plist */,
 			);
 			path = SwiftNoStoryboardsUITests;
+			sourceTree = "<group>";
+		};
+		6029EDFF1CD3E18800637B2C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				6029EDDA1CD3D98500637B2C /* Info.plist */,
+				6029EDD71CD3D98500637B2C /* LaunchScreen.storyboard */,
+				6029EDD51CD3D98500637B2C /* Assets.xcassets */,
+				6029EDCE1CD3D98500637B2C /* AppDelegate.swift */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
