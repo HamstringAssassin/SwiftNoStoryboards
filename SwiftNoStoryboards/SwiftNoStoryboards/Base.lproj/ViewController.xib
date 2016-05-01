@@ -15,17 +15,18 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Main ViewController" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JBQ-Bp-gzd">
-                    <rect key="frame" x="223" y="289" width="154" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MZ9-nd-nyi">
+                    <rect key="frame" x="227" y="285" width="146" height="30"/>
+                    <state key="normal" title="Table View Controller"/>
+                    <connections>
+                        <action selector="didPressTableViewButton:" destination="-1" eventType="touchUpInside" id="PQ1-07-3wZ"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="JBQ-Bp-gzd" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="GJH-2D-HQJ"/>
-                <constraint firstItem="JBQ-Bp-gzd" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="XlG-6W-esr"/>
+                <constraint firstItem="MZ9-nd-nyi" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="fNS-z7-CDr"/>
+                <constraint firstItem="MZ9-nd-nyi" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="yvC-gN-6uu"/>
             </constraints>
         </view>
     </objects>
