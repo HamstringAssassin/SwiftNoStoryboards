@@ -22,7 +22,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction func didPressTableViewButton(sender: UIButton) {
-        var tableViewController = TableViewController()
+        let tableViewController = TableViewController()
         navigationController?.pushViewController(tableViewController, animated: true)
     }
 
