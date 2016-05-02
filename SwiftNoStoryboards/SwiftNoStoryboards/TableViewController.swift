@@ -10,6 +10,8 @@ import UIKit
 
 class TableViewController: UITableViewController {
     
+    private let cellReuseIdentifier:String = "cell"
+    
     var names = ["Alice","Bob","Michael","Sinead","Lola"]
     
     override func viewDidLoad() {
@@ -18,7 +20,7 @@ class TableViewController: UITableViewController {
     }
     
     func registerClassForCell() {
-        tableView.registerClass(UITableViewCell.classForCoder(), forCellReuseIdentifier: "cell")
+        tableView.registerClass(UITableViewCell.classForCoder(), forCellReuseIdentifier: cellReuseIdentifier)
     }
     
     
@@ -31,16 +33,9 @@ class TableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        tableView.registerClass(UITableViewCell.classForCoder(), forCellReuseIdentifier: "cell")
         
-        var cell = tableView.dequeueReusableCellWithIdentifier("cell") as UITableViewCell!
-        
-        if cell == nil {
-            cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "cell")
-        }
-    
-        let name = names[indexPath.row]
-        cell.textLabel?.text = name
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier) as UITableViewCell!
+        cell.textLabel?.text = names[indexPath.row]
         return cell
     }
     
