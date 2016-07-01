@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -22,12 +22,21 @@
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gcR-9g-6Pa" customClass="ExtraDetailView" customModule="SwiftNoStoryboards" customModuleProvider="target">
+                    <rect key="frame" x="241" y="115" width="119" height="68"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="gcR-9g-6Pa" secondAttribute="trailing" constant="240" id="ApB-Ut-6rz"/>
+                <constraint firstItem="gcR-9g-6Pa" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="115" id="M7D-hn-Qhr"/>
+                <constraint firstItem="gcR-9g-6Pa" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="241" id="e83-HM-gn3"/>
+                <constraint firstItem="FsJ-0y-cFa" firstAttribute="top" secondItem="gcR-9g-6Pa" secondAttribute="bottom" constant="106" id="hrZ-S0-AIS"/>
                 <constraint firstItem="FsJ-0y-cFa" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="kHS-Ux-G2h"/>
                 <constraint firstItem="FsJ-0y-cFa" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="tis-3a-ihx"/>
             </constraints>
+            <point key="canvasLocation" x="321" y="305"/>
         </view>
     </objects>
 </document>

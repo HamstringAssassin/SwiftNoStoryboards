@@ -18,6 +18,8 @@
 		6029EDE41CD3D98500637B2C /* SwiftNoStoryboardsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6029EDE31CD3D98500637B2C /* SwiftNoStoryboardsTests.swift */; };
 		6029EDEF1CD3D98500637B2C /* SwiftNoStoryboardsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6029EDEE1CD3D98500637B2C /* SwiftNoStoryboardsUITests.swift */; };
 		6029EDFE1CD3DD5C00637B2C /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6029EDFC1CD3DD5C00637B2C /* ViewController.xib */; };
+		60C322591D265EE80012B18F /* ExtraDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C322581D265EE80012B18F /* ExtraDetailView.swift */; };
+		60C3225B1D265EF50012B18F /* ExtraDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60C3225A1D265EF50012B18F /* ExtraDetailView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +57,8 @@
 		6029EDEE1CD3D98500637B2C /* SwiftNoStoryboardsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftNoStoryboardsUITests.swift; sourceTree = "<group>"; };
 		6029EDF01CD3D98500637B2C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6029EDFD1CD3DD5C00637B2C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = SwiftNoStoryboards/Base.lproj/ViewController.xib; sourceTree = "<group>"; };
+		60C322581D265EE80012B18F /* ExtraDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtraDetailView.swift; sourceTree = "<group>"; };
+		60C3225A1D265EF50012B18F /* ExtraDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExtraDetailView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +109,8 @@
 			children = (
 				602157DC1CD6873200D76E2C /* DetailViewController.swift */,
 				602157DD1CD6873200D76E2C /* DetailViewController.xib */,
+				60C322581D265EE80012B18F /* ExtraDetailView.swift */,
+				60C3225A1D265EF50012B18F /* ExtraDetailView.xib */,
 			);
 			name = DetailViewController;
 			sourceTree = "<group>";
@@ -277,6 +283,7 @@
 				6029EDFE1CD3DD5C00637B2C /* ViewController.xib in Resources */,
 				602157DF1CD6873200D76E2C /* DetailViewController.xib in Resources */,
 				6029EDD61CD3D98500637B2C /* Assets.xcassets in Resources */,
+				60C3225B1D265EF50012B18F /* ExtraDetailView.xib in Resources */,
 				602157D61CD63FD800D76E2C /* TableViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -306,6 +313,7 @@
 				602157D81CD63FF300D76E2C /* TableViewController.swift in Sources */,
 				6029EDCF1CD3D98500637B2C /* AppDelegate.swift in Sources */,
 				602157DE1CD6873200D76E2C /* DetailViewController.swift in Sources */,
+				60C322591D265EE80012B18F /* ExtraDetailView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
