@@ -20,6 +20,8 @@
 		6029EDE41CD3D98500637B2C /* SwiftNoStoryboardsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6029EDE31CD3D98500637B2C /* SwiftNoStoryboardsTests.swift */; };
 		6029EDEF1CD3D98500637B2C /* SwiftNoStoryboardsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6029EDEE1CD3D98500637B2C /* SwiftNoStoryboardsUITests.swift */; };
 		6029EDFE1CD3DD5C00637B2C /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6029EDFC1CD3DD5C00637B2C /* ViewController.xib */; };
+		6045FD921F6D765500355D90 /* ParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6045FD911F6D765500355D90 /* ParentViewController.swift */; };
+		6045FD941F6D766700355D90 /* ChildViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6045FD931F6D766700355D90 /* ChildViewController.swift */; };
 		61C3E5FCE6734B465E694250 /* Pods_SwiftNoStoryboards.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B553A9ADE56BF856418187BA /* Pods_SwiftNoStoryboards.framework */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +63,8 @@
 		6029EDEE1CD3D98500637B2C /* SwiftNoStoryboardsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftNoStoryboardsUITests.swift; sourceTree = "<group>"; };
 		6029EDF01CD3D98500637B2C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6029EDFD1CD3DD5C00637B2C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = SwiftNoStoryboards/Base.lproj/ViewController.xib; sourceTree = "<group>"; };
+		6045FD911F6D765500355D90 /* ParentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParentViewController.swift; sourceTree = "<group>"; };
+		6045FD931F6D766700355D90 /* ChildViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChildViewController.swift; sourceTree = "<group>"; };
 		6D9AA6FEF7BFC59286B574DB /* Pods-SwiftNoStoryboards.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftNoStoryboards.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftNoStoryboards/Pods-SwiftNoStoryboards.debug.xcconfig"; sourceTree = "<group>"; };
 		81CFFF16F3A96EBEDD7CDE5F /* Pods-SwiftNoStoryboardsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftNoStoryboardsTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftNoStoryboardsTests/Pods-SwiftNoStoryboardsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B25839D4A80FABED73858E46 /* Pods_SwiftNoStoryboardsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftNoStoryboardsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -162,6 +166,7 @@
 		6029EDCD1CD3D98500637B2C /* SwiftNoStoryboards */ = {
 			isa = PBXGroup;
 			children = (
+				6045FD901F6D763E00355D90 /* VariableSizedContainerView */,
 				602157DB1CD6870000D76E2C /* DetailViewController */,
 				602157DA1CD63FFF00D76E2C /* TableViewController */,
 				602157D91CD63FFB00D76E2C /* ViewController */,
@@ -197,6 +202,15 @@
 				6029EDCE1CD3D98500637B2C /* AppDelegate.swift */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		6045FD901F6D763E00355D90 /* VariableSizedContainerView */ = {
+			isa = PBXGroup;
+			children = (
+				6045FD911F6D765500355D90 /* ParentViewController.swift */,
+				6045FD931F6D766700355D90 /* ChildViewController.swift */,
+			);
+			name = VariableSizedContainerView;
 			sourceTree = "<group>";
 		};
 		975C21AA6D5C7AA3F60EE8A0 /* Frameworks */ = {
@@ -491,9 +505,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				6029EDD11CD3D98500637B2C /* ViewController.swift in Sources */,
+				6045FD921F6D765500355D90 /* ParentViewController.swift in Sources */,
 				602157D81CD63FF300D76E2C /* TableViewController.swift in Sources */,
 				6029EDCF1CD3D98500637B2C /* AppDelegate.swift in Sources */,
 				602157DE1CD6873200D76E2C /* DetailViewController.swift in Sources */,
+				6045FD941F6D766700355D90 /* ChildViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

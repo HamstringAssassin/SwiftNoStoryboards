@@ -26,4 +26,8 @@ class ViewController: UIViewController {
         navigationController?.pushViewController(tableViewController, animated: true)
     }
 
+    @IBAction func didPressVariableSIzedContainerView(sender: AnyObject) {
+        let parentViewController = ParentViewController()
+        navigationController?.pushViewController(parentViewController, animated: true)
+    }
 }
