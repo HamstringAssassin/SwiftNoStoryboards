@@ -1,0 +1,6 @@
+framework module Pods_SwiftNoStoryboardsUITests {
+  umbrella header "Pods-SwiftNoStoryboardsUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
