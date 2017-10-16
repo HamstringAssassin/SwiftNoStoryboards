@@ -75,6 +75,7 @@ class ChildViewController: UIViewController {
         _label.autoPinEdgeToSuperviewEdge(.Right)
         _label.autoAlignAxisToSuperviewAxis(.Vertical)
         _label.autoPinEdge(.Bottom, toEdge: .Bottom, ofView: self.view, withOffset: -10)
+        self.view.layoutIfNeeded()
     }
     
     private func _skinUI() {

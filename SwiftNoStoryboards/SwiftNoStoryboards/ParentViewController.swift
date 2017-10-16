@@ -130,7 +130,17 @@ class ParentViewController: UIViewController {
     
     private func _updateContainerView() {
         let childControllerView = ChildViewController()
+        self.embedViewController(childControllerView, inView: _precedingContainerView)
+    }
+    
+    private func _updatePreceedingContainerView() {
+        let childControllerView = ChildViewController()
         self.embedViewController(childControllerView, inView: _containerView)
+    }
+    
+    private func _updateProceedingContainerView() {
+        let childControllerView = ChildViewController()
+        self.embedViewController(childControllerView, inView: _procedingContainerView)
     }
     
     private func _skinUI() {

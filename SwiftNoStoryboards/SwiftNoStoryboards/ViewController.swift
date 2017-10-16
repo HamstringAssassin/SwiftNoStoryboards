@@ -30,4 +30,9 @@ class ViewController: UIViewController {
         let parentViewController = ParentViewController()
         navigationController?.pushViewController(parentViewController, animated: true)
     }
+    
+    @IBAction func didPressResizableContainerView(sender: AnyObject) {
+        let resizableViewController = ResizableParentViewController()
+        navigationController?.pushViewController(resizableViewController, animated: true)
+    }
 }
