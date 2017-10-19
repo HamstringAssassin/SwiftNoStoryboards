@@ -7,6 +7,7 @@ target 'SwiftNoStoryboards' do
 
   # Pods for SwiftNoStoryboards
   pod 'PureLayout'
+  pod 'ReactiveCocoa', '~>2.1.2'
 
   target 'SwiftNoStoryboardsTests' do
     inherit! :search_paths
