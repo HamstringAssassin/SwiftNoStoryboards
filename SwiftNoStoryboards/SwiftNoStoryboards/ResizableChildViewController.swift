@@ -63,11 +63,6 @@ class ResizableChildViewController: UIViewController {
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         _collapseButton.layer.cornerRadius = max(_collapseButton.frame.height/2, _collapseButton.frame.width/2)
-        
-//        if _originalBodyHeight == 0.0 {
-//            _originalBodyHeight = _bodyHeightConstraint?.constant ?? 0.0
-//        }
-        
     }
     
     private func _createUI() {
