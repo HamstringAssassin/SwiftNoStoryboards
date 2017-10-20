@@ -13,13 +13,21 @@ class UpdatingParentViewController: UIViewController {
     
     private var _scrollView: UIScrollView!
     
-    private var _firstContainerView: UIView!
+    private var _firstContainerView: UIView! {
+        didSet {
+            _firstContainerView.backgroundColor = UIColor.blueColor().colorWithAlphaComponent(0.5)
+        }
+    }
     
-    private var _secondContainerView: UIView!
+    private var _secondContainerView: UIView! {
+        didSet {
+            _secondContainerView.backgroundColor = UIColor.blueColor().colorWithAlphaComponent(0.5)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("ViewDidLoad")
+        Log("")
         _createUI()
         _layoutUI()
         _skinUI()
@@ -32,45 +40,65 @@ class UpdatingParentViewController: UIViewController {
     }
     
     private func _layoutUI() {
+        self.view.addSubview(_scrollView)
+        _scrollView.autoPinEdgesToSuperviewEdges()
+        _setupScrollView(_scrollView)
         
+        _firstContainerView.autoPinEdgeToSuperviewEdge(.Top, withInset: 10)
+        _firstContainerView.autoPinEdgeToSuperviewEdge(.Left, withInset: 10)
+        _firstContainerView.autoPinEdgeToSuperviewEdge(.Right, withInset: 10)
+        
+        _secondContainerView.autoPinEdge(.Top, toEdge: .Bottom, ofView: _firstContainerView, withOffset: 10)
+        _secondContainerView.autoPinEdgeToSuperviewEdge(.Left, withInset: 10)
+        _secondContainerView.autoPinEdgeToSuperviewEdge(.Right, withInset: 10)
+    }
+    
+    private func _setupScrollView(scrollView: UIScrollView) {
+        let contentView = UIView(forAutoLayout: ())
+        _scrollView.addSubview(contentView)
+        contentView.autoPinEdgesToSuperviewEdges()
+        contentView.autoSetDimension(.Width, toSize: view.frame.width)
+        
+        contentView.addSubview(_firstContainerView)
+        contentView.addSubview(_secondContainerView)
     }
     
     private func _skinUI() {
-        
+        self.view.backgroundColor = UIColor.whiteColor()
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        print("viewWillAppear")
+        Log("")
     }
     
     override func updateViewConstraints() {
         super.updateViewConstraints()
-        print("updateViewConstraints")
+        Log("")
     }
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        print("viewWillLayoutSubviews")
+        Log("")
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        print("viewdidLayoutSubviews")
+        Log("")
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        print("viewDidAppear")
+        Log("")
     }
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        print("viewWillDisappear")
+        Log("")
     }
     
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
-        print("viewDidDisappear")
+        Log("")
     }
 }

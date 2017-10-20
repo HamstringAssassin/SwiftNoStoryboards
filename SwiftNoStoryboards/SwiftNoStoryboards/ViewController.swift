@@ -35,4 +35,8 @@ class ViewController: UIViewController {
         let resizableViewController = ResizableParentViewController()
         navigationController?.pushViewController(resizableViewController, animated: true)
     }
+    @IBAction func didPressUpdatingParentViewController(sender: AnyObject) {
+        let updatingParentViewController = UpdatingParentViewController()
+        navigationController?.pushViewController(updatingParentViewController, animated: true)
+    }
 }

@@ -39,13 +39,24 @@
                         <action selector="didPressResizableContainerView:" destination="-1" eventType="touchUpInside" id="wRa-x2-N4P"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hIf-cU-r21">
+                    <rect key="frame" x="61" y="344" width="199" height="30"/>
+                    <state key="normal" title="UpatingParentViewController"/>
+                    <connections>
+                        <action selector="didPressUpdatingParentViewController:" destination="-1" eventType="touchUpInside" id="CBc-ax-LSu"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="hIf-cU-r21" firstAttribute="top" secondItem="3tV-aF-kcn" secondAttribute="bottom" constant="7.5" id="1re-G8-azE"/>
                 <constraint firstItem="3tV-aF-kcn" firstAttribute="top" secondItem="MZ9-nd-nyi" secondAttribute="bottom" constant="7.5" id="6sA-WR-WGH"/>
                 <constraint firstAttribute="bottom" secondItem="3tV-aF-kcn" secondAttribute="bottom" constant="281" id="BhE-Fy-kcs"/>
                 <constraint firstItem="3tV-aF-kcn" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="EPC-N7-GhR"/>
+                <constraint firstItem="hIf-cU-r21" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="61" id="GYf-ns-IJq"/>
+                <constraint firstAttribute="bottom" secondItem="hIf-cU-r21" secondAttribute="bottom" constant="194" id="MKz-Uh-4MM"/>
                 <constraint firstItem="MZ9-nd-nyi" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="fNS-z7-CDr"/>
+                <constraint firstAttribute="trailing" secondItem="hIf-cU-r21" secondAttribute="trailing" constant="60" id="juU-km-gyf"/>
                 <constraint firstItem="BmE-49-Zyo" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="lhu-7b-VPR"/>
                 <constraint firstItem="MZ9-nd-nyi" firstAttribute="top" secondItem="BmE-49-Zyo" secondAttribute="bottom" constant="8.5" id="pP3-P3-gUv"/>
                 <constraint firstItem="MZ9-nd-nyi" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="yvC-gN-6uu"/>

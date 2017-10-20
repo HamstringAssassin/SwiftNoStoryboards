@@ -6,15 +6,18 @@ PODS:
   - ReactiveCocoa/Core (2.1.8):
     - ReactiveCocoa/no-arc
   - ReactiveCocoa/no-arc (2.1.8)
+  - XCGLogger (3.6.0)
 
 DEPENDENCIES:
   - PureLayout
   - ReactiveCocoa (~> 2.1.2)
+  - XCGLogger (~> 3.6.0)
 
 SPEC CHECKSUMS:
   PureLayout: 4d550abe49a94f24c2808b9b95db9131685fe4cd
   ReactiveCocoa: f89f2e009a87951b50321bf9feb958823fcc617e
+  XCGLogger: 53a3efe22e228e8b25ed8184bc074c2b06d48490
 
-PODFILE CHECKSUM: 5e05d845c692fb90de56867b5c54485f797f79a5
+PODFILE CHECKSUM: 76f9809cf5959beea91b437ca8b68823e7020f23
 
 COCOAPODS: 1.1.1
