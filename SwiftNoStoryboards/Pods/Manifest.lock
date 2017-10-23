@@ -1,23 +1,35 @@
 PODS:
   - PureLayout (3.0.2)
-  - ReactiveCocoa (2.1.8):
-    - ReactiveCocoa/Core (= 2.1.8)
-    - ReactiveCocoa/no-arc (= 2.1.8)
-  - ReactiveCocoa/Core (2.1.8):
-    - ReactiveCocoa/no-arc
-  - ReactiveCocoa/no-arc (2.1.8)
+  - ReactiveCocoa (4.2.2):
+    - Result (~> 2.0)
+  - Result (2.1.3)
+  - Rex (0.10.0):
+    - ReactiveCocoa (~> 4.1)
   - XCGLogger (3.6.0)
 
 DEPENDENCIES:
   - PureLayout
-  - ReactiveCocoa (~> 2.1.2)
+  - ReactiveCocoa (~> 4.2.2)
+  - Rex (from `https://github.com/RACCommunity/Rex`, tag `0.12.0`)
   - XCGLogger (~> 3.6.0)
+
+EXTERNAL SOURCES:
+  Rex:
+    :git: https://github.com/RACCommunity/Rex
+    :tag: 0.12.0
+
+CHECKOUT OPTIONS:
+  Rex:
+    :git: https://github.com/RACCommunity/Rex
+    :tag: 0.12.0
 
 SPEC CHECKSUMS:
   PureLayout: 4d550abe49a94f24c2808b9b95db9131685fe4cd
-  ReactiveCocoa: f89f2e009a87951b50321bf9feb958823fcc617e
+  ReactiveCocoa: 72263e7ac0770c274617ccd345e01049d0ca38ae
+  Result: 18e1a7597fbcca5923c565b40a25a98afafdee02
+  Rex: a6707f736387aa7a0d71f72947a33843f9e16079
   XCGLogger: 53a3efe22e228e8b25ed8184bc074c2b06d48490
 
-PODFILE CHECKSUM: 76f9809cf5959beea91b437ca8b68823e7020f23
+PODFILE CHECKSUM: e599b25e0845fc62971b8738fb19681926c35c58
 
 COCOAPODS: 1.1.1

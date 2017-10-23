@@ -8,6 +8,7 @@
 
 import UIKit
 import ReactiveCocoa
+import Rex
 
 class UpdatingCell: UICollectionViewCell {
     
@@ -19,13 +20,18 @@ class UpdatingCell: UICollectionViewCell {
         }
     }
     
-    var viewModel: UpdatingCellViewModel?
+    var viewModel: UpdatingCellViewModel? {
+        didSet {
+            _updateUI(viewModel)
+        }
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         _createUI()
         _layoutUI()
-        _bindUI(viewModel)
+        _updateUI(viewModel)
+//        _bindUI(viewModel)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -43,9 +49,14 @@ class UpdatingCell: UICollectionViewCell {
         _textLabel.autoPinEdgesToSuperviewEdges()
     }
     
-    private func _bindUI(viewModel: UpdatingCellViewModel?) {
+    private func _updateUI(viewModel: UpdatingCellViewModel?) {
         guard let viewModel = viewModel else { return }
-        
+        _textLabel.text = viewModel.title
     }
+    
+//    private func _bindUI(viewModel: UpdatingCellViewModel?) {
+//        guard let viewModel = viewModel else { return }
+//        _textLabel.rex_text <~ viewModel.title
+//    }
 }
 
