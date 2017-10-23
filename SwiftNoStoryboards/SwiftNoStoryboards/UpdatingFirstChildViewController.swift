@@ -28,6 +28,12 @@ class UpdatingFirstChildViewController: UIViewController {
         }
     }
     
+    var viewModel: UpdatingFirstChildViewModel? {
+        didSet {
+//            updateUI(viewModel)
+        }
+    }
+    
     override func loadView() {
         _createUI()
         _addUI()
@@ -71,18 +77,17 @@ class UpdatingFirstChildViewController: UIViewController {
     }
     
     
-    override var preferredContentSize: CGSize {
-        get {
-            return _collectionView.collectionViewLayout.collectionViewContentSize()
-        }
-        set {
-            self.preferredContentSize = newValue
-        }
-        
-    }
+//    override var preferredContentSize: CGSize {
+//        get {
+//            return _collectionView.collectionViewLayout.collectionViewContentSize()
+//        }
+//        set {
+//            self.preferredContentSize = newValue
+//        }
+//        
+//    }
     
     private func _skinUI() {
-//        self.view.backgroundColor = UIColor.whiteColor()
     }
 }
 
@@ -92,11 +97,12 @@ extension UpdatingFirstChildViewController: UICollectionViewDataSource, UICollec
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 20
+        return viewModel?.dataSource.count ?? 1
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! UpdatingCell
+        cell.viewModel = viewModel?.dataSource[indexPath.row]
         return cell
     }
     

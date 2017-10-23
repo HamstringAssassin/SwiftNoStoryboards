@@ -64,6 +64,7 @@ class UpdatingSecondChildViewController: UIViewController {
         _collectionView.autoPinEdgeToSuperviewEdge(.Bottom)
         
         _collectionView.autoSetDimension(.Width, toSize: UIScreen.percentage(0.9))
+        
         collectionViewHeightConstraint = _collectionView.autoSetDimension(.Height, toSize: 10, relation: .GreaterThanOrEqual)
 
         self.view.layoutIfNeeded()

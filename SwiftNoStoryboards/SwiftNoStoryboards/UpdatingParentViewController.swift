@@ -8,6 +8,12 @@
 
 import UIKit
 import ReactiveCocoa
+import enum Result.NoError
+
+protocol UpdatingParentViewControllerDelegate: class {
+    func updatingParentViewControllerEmbedUpdatingFirstViewController(viewController: UpdatingParentViewController) -> UpdatingFirstChildViewController
+    func updatingParentViewControllerEmbedUpdatingSecondViewController(viewController: UpdatingParentViewController) -> UpdatingSecondChildViewController
+}
 
 class UpdatingParentViewController: UIViewController {
     
@@ -28,6 +34,13 @@ class UpdatingParentViewController: UIViewController {
         didSet {
             _secondContainerView.backgroundColor = UIColor.blueColor().colorWithAlphaComponent(0.5)
         }
+    }
+    
+    private weak var _delgate: UpdatingParentViewControllerDelegate?
+    
+    convenience init(delegate: UpdatingParentViewControllerDelegate?) {
+        self.init()
+        self._delgate = delegate
     }
     
     override func loadView() {
@@ -102,13 +115,15 @@ class UpdatingParentViewController: UIViewController {
     }
     
     private func _configureFirstViewController() {
-        let firstUpdatingViewController = UpdatingFirstChildViewController()
+        guard let firstUpdatingViewController = _delgate?.updatingParentViewControllerEmbedUpdatingFirstViewController(self) else { return }
         self.embedViewController(firstUpdatingViewController, inView: _firstContainerView)
+        self._firstContainerView.layoutIfNeeded()
     }
     
     private func _configureSecondViewController() {
-        let secondUpdatingViewController = UpdatingSecondChildViewController()
+        guard let secondUpdatingViewController = _delgate?.updatingParentViewControllerEmbedUpdatingSecondViewController(self) else { return }
         self.embedViewController(secondUpdatingViewController, inView: _secondContainerView)
+        self._secondContainerView.layoutIfNeeded()
     }
     
     override func viewWillAppear(animated: Bool) {

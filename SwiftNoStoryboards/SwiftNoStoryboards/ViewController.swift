@@ -10,6 +10,8 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    var _updatingParentCoordinator: UpdatingParentCoordinator?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Main ViewController"
@@ -36,7 +38,11 @@ class ViewController: UIViewController {
         navigationController?.pushViewController(resizableViewController, animated: true)
     }
     @IBAction func didPressUpdatingParentViewController(sender: AnyObject) {
-        let updatingParentViewController = UpdatingParentViewController()
-        navigationController?.pushViewController(updatingParentViewController, animated: true)
+        _updatingParentCoordinator = UpdatingParentCoordinator(navigationController: navigationController, delegate: self)
+        _updatingParentCoordinator?.start()
     }
+}
+
+extension ViewController: UpdatingParentCoordinatorDelegate {
+    
 }
