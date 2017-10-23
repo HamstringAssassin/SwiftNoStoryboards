@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ReactiveCocoa
 
 class UpdatingCell: UICollectionViewCell {
     
@@ -18,10 +19,13 @@ class UpdatingCell: UICollectionViewCell {
         }
     }
     
+    var viewModel: UpdatingCellViewModel?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         _createUI()
         _layoutUI()
+        _bindUI(viewModel)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -37,6 +41,11 @@ class UpdatingCell: UICollectionViewCell {
         
         self.contentView.addSubview(_textLabel)
         _textLabel.autoPinEdgesToSuperviewEdges()
+    }
+    
+    private func _bindUI(viewModel: UpdatingCellViewModel?) {
+        guard let viewModel = viewModel else { return }
+        
     }
 }
 

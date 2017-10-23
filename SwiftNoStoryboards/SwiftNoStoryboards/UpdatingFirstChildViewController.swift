@@ -28,36 +28,61 @@ class UpdatingFirstChildViewController: UIViewController {
         }
     }
     
+    override func loadView() {
+        _createUI()
+        _addUI()
+        view.setNeedsUpdateConstraints()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         Log("")
-        _createUI()
-        _layoutUI()
         _skinUI()
     }
     
+    override func updateViewConstraints() {
+        _layoutUI()
+        
+        let value = _collectionView.collectionViewLayout.collectionViewContentSize().height
+        Log("\(value)")
+        collectionViewHeightConstraint?.constant = value
+        
+        super.updateViewConstraints()
+    }
+    
     private func _createUI() {
+        self.view = UIView()
         self._collectionView = UICollectionView(frame: CGRectZero, collectionViewLayout: UICollectionViewFlowLayout())
     }
     
-    private func _layoutUI() {
+    private func _addUI() {
         self.view.addSubview(_collectionView)
+    }
+    
+    private func _layoutUI() {
         _collectionView.autoPinEdgeToSuperviewEdge(.Top)
+        _collectionView.autoPinEdgeToSuperviewEdge(.Bottom)
         _collectionView.autoAlignAxisToSuperviewAxis(.Vertical)
-//        _collectionView.autoPinEdgeToSuperviewEdge(.Left)
-//        _collectionView.autoPinEdgeToSuperviewEdge(.Right)
         _collectionView.autoSetDimension(.Width, toSize: UIScreen.percentage(1.0))
-
-//        _collectionView.autoAlignAxisToSuperviewAxis(.Vertical)
-//        _collectionView.autoAlignAxisToSuperviewAxis(.Horizontal)
-//        NSLayoutConstraint.autoSetPriority(UILayoutPriorityFittingSizeLevel) {
-            collectionViewHeightConstraint = _collectionView.autoSetDimension(.Height, toSize: 10)
-//        }
+        
+        collectionViewHeightConstraint = _collectionView.autoSetDimension(.Height, toSize: 10, relation: .GreaterThanOrEqual)
         
         self.view.layoutIfNeeded()
     }
     
+    
+    override var preferredContentSize: CGSize {
+        get {
+            return _collectionView.collectionViewLayout.collectionViewContentSize()
+        }
+        set {
+            self.preferredContentSize = newValue
+        }
+        
+    }
+    
     private func _skinUI() {
+//        self.view.backgroundColor = UIColor.whiteColor()
     }
 }
 
@@ -92,30 +117,15 @@ extension UpdatingFirstChildViewController {
         super.viewWillAppear(animated)
         Log("")
     }
-    
-    override func updateViewConstraints() {
-        super.updateViewConstraints()
-        Log("")
-        let value = _collectionView.collectionViewLayout.collectionViewContentSize().height
-        Log("\(value)")
-        collectionViewHeightConstraint?.constant = value
-        Log("\(collectionViewHeightConstraint?.constant)")
-    }
-    
+
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-//        let value = _collectionView.collectionViewLayout.collectionViewContentSize().height
-//        Log("\(value)")
-//        collectionViewHeightConstraint?.constant = value
-//        Log("\(value)")
+        Log("")
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-//        let value = _collectionView.collectionViewLayout.collectionViewContentSize().height
-//        Log("\(value)")
-//        collectionViewHeightConstraint?.constant = value
-//        Log("\(value)")
+        Log("")
     }
     
     override func viewDidAppear(animated: Bool) {

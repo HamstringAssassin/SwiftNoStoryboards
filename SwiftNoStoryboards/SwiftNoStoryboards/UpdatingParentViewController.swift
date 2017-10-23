@@ -11,12 +11,12 @@ import ReactiveCocoa
 
 class UpdatingParentViewController: UIViewController {
     
-    private var _scrollView: UIScrollView! {
+    private var _scrollView: UIScrollView!
+    
+    private var _contentView: UIView! {
         didSet {
         }
     }
-    
-    private var _contentView: UIView!
     
     private var _firstContainerView: UIView! {
         didSet {
@@ -40,18 +40,9 @@ class UpdatingParentViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        Log("")
         _configureFirstViewController()
         _configureSecondViewController()
         _skinUI()
-    }
-    
-    private func _addUI() {
-        self.view.addSubview(_scrollView)
-        _setupScrollView(_scrollView)
-
-        self.view.setNeedsUpdateConstraints()
-
     }
     
     private func _createUI() {
@@ -61,53 +52,49 @@ class UpdatingParentViewController: UIViewController {
         self._secondContainerView = UIView(forAutoLayout: ())
     }
     
-    private func _layoutUI() {
-        
-        _contentView.autoPinEdgesToSuperviewEdges()
-        _contentView.autoMatchDimension(.Width, toDimension: .Width, ofView: view)
-        _contentView.autoAlignAxisToSuperviewAxis(.Horizontal)
-        _contentView.autoAlignAxisToSuperviewAxis(.Vertical)
-        
-        _firstContainerView.autoPinEdgeToSuperviewEdge(.Top, withInset: 10)
-        _firstContainerView.autoPinEdgeToSuperviewEdge(.Left, withInset: 10)
-        _firstContainerView.autoPinEdgeToSuperviewEdge(.Right, withInset: 10)
-        _firstContainerView.autoAlignAxisToSuperviewAxis(.Vertical)
-        
-        
-//        _firstContainerView.autoSetDimension(.Width, toSize: UIScreen.percentage(1.0))
-//        _firstContainerView.autoPinEdgeToSuperviewEdge(.Bottom)
-//        NSLayoutConstraint.autoSetPriority(UILayoutPriorityFittingSizeLevel) {
-            _firstContainerView.autoSetDimension(.Height, toSize: 0, relation: .GreaterThanOrEqual)
-//        }
-        
-//        _firstContainerView.autoSetDimension(.Height, toSize: 0, relation: .GreaterThanOrEqual)
-//        _firstContainerView.autoPinEdgeToSuperviewEdge(.Bottom)
-        
-//        _firstContainerView.autoSetDimension(.Width, toSize: UIScreen.percentage(1.0))
-//        _firstContainerView.autoAlignAxisToSuperviewAxis(.Vertical)
-//        _firstContainerView.autoPinEdgeToSuperviewEdge(.Bottom, withInset: 0, relation: .GreaterThanOrEqual)
-        
-        _secondContainerView.autoPinEdge(.Top, toEdge: .Bottom, ofView: _firstContainerView, withOffset: 10)
-        
-        _secondContainerView.autoPinEdgeToSuperviewEdge(.Left, withInset: 10)
-        _secondContainerView.autoPinEdgeToSuperviewEdge(.Right, withInset: 10)
-        _secondContainerView.autoPinEdgeToSuperviewEdge(.Bottom)
-        
+    
+    private func _addUI() {
+        self.view.addSubview(_scrollView)
+        _setupScrollView(_scrollView)
+
+        self.view.setNeedsUpdateConstraints()
     }
     
     private func _setupScrollView(scrollView: UIScrollView) {
-        scrollView.autoPinEdgesToSuperviewEdges()
-
         _contentView = UIView(forAutoLayout: ())
         _scrollView.addSubview(_contentView)
-        
-//        contentView.autoSetDimension(.Width, toSize: view.frame.width)
-//        NSLayoutConstraint.autoSetPriority(UILayoutPriorityDefaultLow) {
-//            scrollViewContentHeight = contentView.autoSetDimension(.Height, toSize: view.frame.height, relation: .GreaterThanOrEqual)
-//        }
-        
         _contentView.addSubview(_firstContainerView)
         _contentView.addSubview(_secondContainerView)
+    }
+
+    override func updateViewConstraints() {
+        if !didSetupConstraints {
+            _layoutUI()
+            didSetupConstraints = true
+        }
+        
+        super.updateViewConstraints()
+    }
+
+    
+    private func _layoutUI() {
+        _scrollView.autoPinEdgesToSuperviewEdges()
+        
+        _contentView.autoPinEdgesToSuperviewEdges()
+        _contentView.autoMatchDimension(.Width, toDimension: .Width, ofView: view)
+        
+        _firstContainerView.autoPinEdgeToSuperviewEdge(.Top, withInset: 10)
+        _firstContainerView.autoPinEdgeToSuperviewEdge(.Left, withInset: 0)
+        _firstContainerView.autoPinEdgeToSuperviewEdge(.Right, withInset: 0)
+
+        _secondContainerView.autoPinEdge(.Top, toEdge: .Bottom, ofView: _firstContainerView, withOffset: 10)
+        _secondContainerView.autoPinEdgeToSuperviewEdge(.Left, withInset: 0)
+        _secondContainerView.autoPinEdgeToSuperviewEdge(.Right, withInset: 0)
+        _secondContainerView.autoPinEdgeToSuperviewEdge(.Bottom)
+    }
+
+    override func preferredContentSizeDidChangeForChildContentContainer(container: UIContentContainer) {
+        Log("")
     }
     
     private func _skinUI() {
@@ -117,54 +104,40 @@ class UpdatingParentViewController: UIViewController {
     private func _configureFirstViewController() {
         let firstUpdatingViewController = UpdatingFirstChildViewController()
         self.embedViewController(firstUpdatingViewController, inView: _firstContainerView)
-//        _firstContainerView.layoutIfNeeded()
-        Log("")
     }
     
     private func _configureSecondViewController() {
         let secondUpdatingViewController = UpdatingSecondChildViewController()
         self.embedViewController(secondUpdatingViewController, inView: _secondContainerView)
-//        _secondContainerView.layoutIfNeeded()
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        Log("")
-    }
-    
-    override func updateViewConstraints() {
-//        if !didSetupConstraints {
-            _layoutUI()
-//        }
-        super.updateViewConstraints()
-
+        Log("\(_scrollView.contentSize)")
     }
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        Log("")
+        Log("\(_scrollView.contentSize)")
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        Log("")
+        Log("\(_scrollView.contentSize)")
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        Log("")
+        Log("\(_scrollView.contentSize)")
     }
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        Log("")
+        Log("\(_scrollView.contentSize)")
     }
     
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
-        Log("")
-//        print("\(_scrollView.hasAmbiguousLayout())") // prints "true"
-//        print("\(_scrollView.exerciseAmbiguityInLayout())") // prints "true"
-        
+        Log("\(_scrollView.contentSize)")
     }
 }
