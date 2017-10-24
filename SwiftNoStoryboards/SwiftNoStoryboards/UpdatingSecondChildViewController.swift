@@ -62,8 +62,7 @@ class UpdatingSecondChildViewController: UIViewController {
         _collectionView.autoPinEdgeToSuperviewEdge(.Top)
         _collectionView.autoAlignAxisToSuperviewAxis(.Vertical)
         _collectionView.autoPinEdgeToSuperviewEdge(.Bottom)
-        
-        _collectionView.autoSetDimension(.Width, toSize: UIScreen.percentage(0.9))
+        _collectionView.autoSetDimension(.Width, toSize: UIScreen.percentage(1.0))
         
         collectionViewHeightConstraint = _collectionView.autoSetDimension(.Height, toSize: 10, relation: .GreaterThanOrEqual)
 
@@ -74,7 +73,7 @@ class UpdatingSecondChildViewController: UIViewController {
     }
 }
 
-extension UpdatingSecondChildViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+extension UpdatingSecondChildViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -86,6 +85,16 @@ extension UpdatingSecondChildViewController: UICollectionViewDataSource, UIColle
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! UpdatingCell
         return cell
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        return _sizeForItemAtIndexPath(indexPath)
+    }
+    
+    private func _sizeForItemAtIndexPath(indexPath: NSIndexPath) -> CGSize{
+        let prototype = UpdatingCell.prototype
+        let size = (prototype as UICollectionViewCell).systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
+        return size
     }
 }
 

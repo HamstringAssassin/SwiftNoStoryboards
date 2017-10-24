@@ -12,8 +12,8 @@ class UpdatingFirstChildViewModel {
     
     var dataSource = [UpdatingCellViewModel]()
     
-    init() {
-        for idx in 0...10 {
+    init(numberOfCells: Int) {
+        for idx in 0...numberOfCells {
             dataSource.append(UpdatingCellViewModel(title: "CellViewModel \(idx)"))
         }
     }

@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import ReactiveCocoa
+import enum Result.NoError
 
 class UpdatingFirstChildViewController: UIViewController {
     
@@ -28,9 +30,12 @@ class UpdatingFirstChildViewController: UIViewController {
         }
     }
     
-    var viewModel: UpdatingFirstChildViewModel? {
-        didSet {
-//            updateUI(viewModel)
+    private var _viewModelProperty = MutableProperty<UpdatingFirstChildViewModel?>(nil)
+    
+    func bindViewModel(producer: SignalProducer<UpdatingFirstChildViewModel, Result.NoError>) {
+        _viewModelProperty <~ producer.map { $0 }.observeOn(UIScheduler())
+        _viewModelProperty.producer.startWithNext { (viewModel) in
+            self._updateUI(viewModel)
         }
     }
     
@@ -42,13 +47,12 @@ class UpdatingFirstChildViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        _layoutUI()
         Log("")
         _skinUI()
     }
     
     override func updateViewConstraints() {
-        _layoutUI()
-        
         let value = _collectionView.collectionViewLayout.collectionViewContentSize().height
         Log("\(value)")
         collectionViewHeightConstraint?.constant = value
@@ -76,18 +80,13 @@ class UpdatingFirstChildViewController: UIViewController {
         self.view.layoutIfNeeded()
     }
     
-    
-//    override var preferredContentSize: CGSize {
-//        get {
-//            return _collectionView.collectionViewLayout.collectionViewContentSize()
-//        }
-//        set {
-//            self.preferredContentSize = newValue
-//        }
-//        
-//    }
-    
     private func _skinUI() {
+    }
+    
+    private func _updateUI(viewModel: UpdatingFirstChildViewModel?) {
+        guard isViewLoaded() else { return }
+        _collectionView.reloadData()
+        self.updateViewConstraints()
     }
 }
 
@@ -97,12 +96,12 @@ extension UpdatingFirstChildViewController: UICollectionViewDataSource, UICollec
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel?.dataSource.count ?? 1
+        return _viewModelProperty.value?.dataSource.count ?? 1
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! UpdatingCell
-        cell.viewModel = viewModel?.dataSource[indexPath.row]
+        cell.viewModel = _viewModelProperty.value?.dataSource[indexPath.row]
         return cell
     }
     

@@ -327,8 +327,8 @@
 		609CCEC61F9E2B8900F6C9EE /* ParentViewController */ = {
 			isa = PBXGroup;
 			children = (
-				6011D9AC1F99044200931775 /* UpdatingParentViewController.swift */,
 				609CCEC71F9E46DF00F6C9EE /* UpdatingParentCoordinator.swift */,
+				6011D9AC1F99044200931775 /* UpdatingParentViewController.swift */,
 			);
 			name = ParentViewController;
 			sourceTree = "<group>";
