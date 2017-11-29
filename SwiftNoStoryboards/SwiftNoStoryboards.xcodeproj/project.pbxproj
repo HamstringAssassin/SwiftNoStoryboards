@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		1E7B19123698C0BA6DB58A00 /* Pods_SwiftNoStoryboardsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 358B932F01B617EC79CEE0C8 /* Pods_SwiftNoStoryboardsTests.framework */; };
 		3C93115D9EA5192F3A085ECE /* Pods_SwiftNoStoryboardsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B25839D4A80FABED73858E46 /* Pods_SwiftNoStoryboardsUITests.framework */; };
+		600522101FCEDBE200969B00 /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6005220F1FCEDBE200969B00 /* GridView.swift */; };
+		600522121FCEDC8700969B00 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600522111FCEDC8700969B00 /* Grid.swift */; };
 		6011D9AD1F99044200931775 /* UpdatingParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6011D9AC1F99044200931775 /* UpdatingParentViewController.swift */; };
 		6011D9AF1F99045F00931775 /* UpdatingFirstChildViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6011D9AE1F99045F00931775 /* UpdatingFirstChildViewController.swift */; };
 		6011D9B11F99046400931775 /* UpdatingSecondChildViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6011D9B01F99046400931775 /* UpdatingSecondChildViewController.swift */; };
@@ -62,6 +64,8 @@
 		358B932F01B617EC79CEE0C8 /* Pods_SwiftNoStoryboardsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftNoStoryboardsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		39D430C193660E53F724625D /* Pods-SwiftNoStoryboardsUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftNoStoryboardsUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftNoStoryboardsUITests/Pods-SwiftNoStoryboardsUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		6001C15798324868C6C45BF9 /* Pods-SwiftNoStoryboardsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftNoStoryboardsTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftNoStoryboardsTests/Pods-SwiftNoStoryboardsTests.release.xcconfig"; sourceTree = "<group>"; };
+		6005220F1FCEDBE200969B00 /* GridView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
+		600522111FCEDC8700969B00 /* Grid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
 		6011D9AC1F99044200931775 /* UpdatingParentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdatingParentViewController.swift; sourceTree = "<group>"; };
 		6011D9AE1F99045F00931775 /* UpdatingFirstChildViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdatingFirstChildViewController.swift; sourceTree = "<group>"; };
 		6011D9B01F99046400931775 /* UpdatingSecondChildViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdatingSecondChildViewController.swift; sourceTree = "<group>"; };
@@ -146,6 +150,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		6005220E1FCEDBC700969B00 /* Grid */ = {
+			isa = PBXGroup;
+			children = (
+				6005220F1FCEDBE200969B00 /* GridView.swift */,
+			);
+			name = Grid;
+			sourceTree = "<group>";
+		};
 		6011D9AB1F99041300931775 /* Updating Child CollectionViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -209,6 +221,7 @@
 		6029EDCD1CD3D98500637B2C /* SwiftNoStoryboards */ = {
 			isa = PBXGroup;
 			children = (
+				6005220E1FCEDBC700969B00 /* Grid */,
 				609CCEB21F99EC8B00F6C9EE /* Utilities */,
 				6011D9AB1F99041300931775 /* Updating Child CollectionViews */,
 				6084FB9F1F877A4200B32201 /* ResizableContainerView */,
@@ -293,6 +306,7 @@
 			isa = PBXGroup;
 			children = (
 				609CCEB91F9A062900F6C9EE /* UIScreen+Percentage.swift */,
+				600522111FCEDC8700969B00 /* Grid.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -636,10 +650,12 @@
 				609CCEBE1F9E2B4A00F6C9EE /* UpdatingFirstChildViewModel.swift in Sources */,
 				6029EDCF1CD3D98500637B2C /* AppDelegate.swift in Sources */,
 				6084FBA31F877A8B00B32201 /* ResizableChildViewController.swift in Sources */,
+				600522101FCEDBE200969B00 /* GridView.swift in Sources */,
 				60A5D9EB1F828E72000D8AB9 /* AutoLayoutTestViewController.swift in Sources */,
 				602157DE1CD6873200D76E2C /* DetailViewController.swift in Sources */,
 				609CCEC01F9E2B5400F6C9EE /* UpdatingSecondChildViewModel.swift in Sources */,
 				6045FD941F6D766700355D90 /* ChildViewController.swift in Sources */,
+				600522121FCEDC8700969B00 /* Grid.swift in Sources */,
 				609CCEBA1F9A062900F6C9EE /* UIScreen+Percentage.swift in Sources */,
 				6011D9B11F99046400931775 /* UpdatingSecondChildViewController.swift in Sources */,
 				609CCEC21F9E2B6000F6C9EE /* UpdatingCellViewModel.swift in Sources */,
@@ -743,6 +759,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 2.3;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -781,6 +798,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_VERSION = 2.3;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};

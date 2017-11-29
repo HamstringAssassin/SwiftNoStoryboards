@@ -15,8 +15,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "107"
             endingLineNumber = "107"
-            landmarkName = "collectionView(_:cellForItemAtIndexPath:)"
-            landmarkType = "7">
+            landmarkName = "UpdatingFirstChildViewController"
+            landmarkType = "4">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

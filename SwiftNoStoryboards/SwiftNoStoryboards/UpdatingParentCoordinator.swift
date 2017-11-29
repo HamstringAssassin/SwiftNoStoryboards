@@ -69,6 +69,7 @@ extension UpdatingParentCoordinator: UpdatingParentViewControllerDelegate {
     
     func updatingParentViewControllerEmbedUpdatingSecondViewController(viewController: UpdatingParentViewController) -> UpdatingSecondChildViewController {
         let secondUpdatingViewController = UpdatingSecondChildViewController()
+        
         return secondUpdatingViewController
     }
 }

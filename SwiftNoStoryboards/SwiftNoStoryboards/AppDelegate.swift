@@ -8,15 +8,22 @@
 
 import UIKit
 
+private extension Selector {
+    static let _longPress = #selector(AppDelegate._longPress(_:))
+}
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    var showGrid: Bool = false
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        
+        _addLongPressGesture(window!)
         
         let mainViewController = ViewController(nibName: "ViewController", bundle: nil)
         let navigationController = UINavigationController(rootViewController: mainViewController)
@@ -25,6 +32,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window?.makeKeyAndVisible()
         return true
+    }
+    
+    private func _addLongPressGesture(view: UIView) {
+        let gesture = UILongPressGestureRecognizer(target: self, action: ._longPress)
+        gesture.minimumPressDuration = 3
+        
+        view.addGestureRecognizer(gesture)
+    }
+    
+    @objc private func _longPress(gesture: UILongPressGestureRecognizer) {
+        print("a long press has happened")
+        if gesture.state == .Ended {
+            if showGrid {
+                self.window?.subviews.last?.removeFromSuperview()
+                showGrid = false
+            } else {
+                let gridView = GridView(forAutoLayout: ())
+                self.window?.addSubview(gridView)
+                gridView.autoPinEdgesToSuperviewEdges()
+                showGrid = true
+            }
+        }
+        
     }
 
     func applicationWillResignActive(application: UIApplication) {
