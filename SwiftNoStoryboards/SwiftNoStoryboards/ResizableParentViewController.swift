@@ -12,7 +12,7 @@ class ResizableParentViewController: UIViewController {
 
     private var _childContainerView: UIView! {
         didSet {
-            _childContainerView.backgroundColor = UIColor.blueColor()
+            _childContainerView.backgroundColor = UIColor.blue
         }
     }
     
@@ -34,18 +34,18 @@ class ResizableParentViewController: UIViewController {
     
     private func _layoutUI() {
         self.view.addSubview(_childContainerView)
-        _childContainerView.autoAlignAxisToSuperviewAxis(.Horizontal)
-        _childContainerView.autoAlignAxisToSuperviewAxis(.Vertical)
+        _childContainerView.autoAlignAxis(toSuperviewAxis: .horizontal)
+        _childContainerView.autoAlignAxis(toSuperviewAxis: .vertical)
     }
     
     private func _embedChildViewController() {
         let resizableChildViewController = ResizableChildViewController()
-        self.embedViewController(resizableChildViewController, inView: _childContainerView)
+        self.embedViewController(viewController: resizableChildViewController, inView: _childContainerView)
         _childContainerView.layoutIfNeeded()
     }
     
     private func _skinUI() {
-        self.view.backgroundColor = UIColor.whiteColor()
+        self.view.backgroundColor = UIColor.white
     }
     
 }

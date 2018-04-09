@@ -9,75 +9,28 @@
 import UIKit
 import PureLayout
 
-class Margin: UIView {
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        self.backgroundColor = UIColor.blueColor().colorWithAlphaComponent(0.3)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-}
+//class Layout {
+//   class Grid {
+//    /// 20% small / 6% large
+//    static let column: CGFloat = UIScreen.percentage(multiplier: UIView.compact ? 0.20: 0.06)
+//    /// 4% small / 2% large
+//    static let margin: CGFloat = UIScreen.percentage(multiplier: UIView.compact ? 0.04: 0.02)
+//    /// 4% small / 3% large
+//    static let gutter: CGFloat = UIScreen.percentage(multiplier: UIView.compact ? 0.04: 0.03)
+//
+//    static let numberOfGutters = UIView.compact ? 0 : 2
+//    static let numberOfMargins = UIView.compact ? 5 : 11
+//    static let numberOfColumns = UIView.compact ? 4 : 12
+//    }
+//}
 
-class Gutter: UIView {
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        self.backgroundColor = UIColor.redColor().colorWithAlphaComponent(0.3)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }}
-
-class Column: UIView {
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        self.backgroundColor = UIColor.greenColor().colorWithAlphaComponent(0.3)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }}
 
 class GridView: UIView {
     
-    private var _leftGutter: Gutter!
-    private var _rightGutter: Gutter!
-    
-    private var _column1: Column!
-    private var _column2: Column!
-    private var _column3: Column!
-    private var _column4: Column!
-    private var _column5: Column!
-    private var _column6: Column!
-    private var _column7: Column!
-    private var _column8: Column!
-    private var _column9: Column!
-    private var _column10: Column!
-    private var _column11: Column!
-    private var _column12: Column!
-    
-    private var _margin1: Margin!
-    private var _margin2: Margin!
-    private var _margin3: Margin!
-    private var _margin4: Margin!
-    private var _margin5: Margin!
-    private var _margin6: Margin!
-    private var _margin7: Margin!
-    private var _margin8: Margin!
-    private var _margin9: Margin!
-    private var _margin10: Margin!
-    private var _margin11: Margin!
-    
-    
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.userInteractionEnabled = false
-        _createUI()
-        _layoutUI()
+        self.isUserInteractionEnabled = false
+        layoutUI()
     }
     
     override func awakeFromNib() {
@@ -88,102 +41,98 @@ class GridView: UIView {
         super.init(coder: aDecoder)
     }
     
-    private func _createUI() {
-        UIView.compact ? _createCompactUI() : _createStandardUI()
+    private func layoutUI() {
+        UIView.compact ? layoutCompactUI() : layoutStandardUI()
+    }
+    
+    private func layoutCompactUI() {
         
+        let allGridViews = Grid.numberOfGutters + Grid.numberOfMargins + Grid.numberOfColumns
+        var previousView: UIView? = nil
+        
+        for idx in 0..<allGridViews {
+            if idx == 0 || (idx % 2 == 0) {
+                let margin = UIView(forAutoLayout: ())
+                margin.backgroundColor = UIColor.blue.withAlphaComponent(0.2)
+                self.addSubview(margin)
+                margin.autoSetDimension(.width, toSize: Grid.margin)
+                margin.autoPinEdge(toSuperviewEdge: .top)
+                margin.autoPinEdge(toSuperviewEdge: .bottom)
+                
+                if let previousView = previousView {
+                    margin.autoPinEdge(.left, to: .right, of: previousView)
+                } else {
+                    margin.autoPinEdge(toSuperviewEdge: .left)
+                }
+                
+                previousView = margin
+            } else {
+                let column = UIView(forAutoLayout: ())
+                column.backgroundColor = UIColor.green.withAlphaComponent(0.2)
+                self.addSubview(column)
+                column.autoSetDimension(.width, toSize: Grid.column)
+                column.autoPinEdge(toSuperviewEdge: .top)
+                column.autoPinEdge(toSuperviewEdge: .bottom)
+                
+                if let previousView = previousView {
+                    column.autoPinEdge(.left, to: .right, of: previousView)
+                }
+                
+                previousView = column
+            }
+        }
         
     }
     
-    private func _createCompactUI() {
-        self._margin1 = Margin(forAutoLayout: ())
-        self._column1 = Column(forAutoLayout: ())
+    private func layoutStandardUI() {
+        let allGridViews = Grid.numberOfGutters + Grid.numberOfMargins + Grid.numberOfColumns
+        var previousView: UIView? = nil
         
-        self._margin2 = Margin(forAutoLayout: ())
-        self._column2 = Column(forAutoLayout: ())
-        
-        self._margin3 = Margin(forAutoLayout: ())
-        self._column3 = Column(forAutoLayout: ())
-        
-        self._margin4 = Margin(forAutoLayout: ())
-        self._column4 = Column(forAutoLayout: ())
-        
-        self._margin5 = Margin(forAutoLayout: ())
-    }
-    
-    private func _createStandardUI() {
-        _leftGutter = Gutter(forAutoLayout: ())
-    }
-    
-    private func _layoutUI() {
-        UIView.compact ? _layoutCompactUI() : _layoutStandardUI()
-    }
-    
-    private func _layoutCompactUI() {
-        self.addSubview(_margin1)
-        _margin1.autoSetDimension(.Width, toSize: Grid.margin)
-        _margin1.autoPinEdgeToSuperviewEdge(.Left)
-        _margin1.autoPinEdgeToSuperviewEdge(.Top)
-        _margin1.autoPinEdgeToSuperviewEdge(.Bottom)
-        
-        self.addSubview(_column1)
-        _column1.autoSetDimension(.Width, toSize: Grid.column)
-        _column1.autoPinEdgeToSuperviewEdge(.Top)
-        _column1.autoPinEdgeToSuperviewEdge(.Bottom)
-        _column1.autoPinEdge(.Left, toEdge: .Right, ofView: _margin1)
-        
-        self.addSubview(_margin2)
-        _margin2.autoSetDimension(.Width, toSize: Grid.margin)
-        _margin2.autoPinEdge(.Left, toEdge: .Right, ofView: _column1)
-        _margin2.autoPinEdgeToSuperviewEdge(.Top)
-        _margin2.autoPinEdgeToSuperviewEdge(.Bottom)
-        
-        self.addSubview(_column2)
-        _column2.autoSetDimension(.Width, toSize: Grid.column)
-        _column2.autoPinEdgeToSuperviewEdge(.Top)
-        _column2.autoPinEdgeToSuperviewEdge(.Bottom)
-        _column2.autoPinEdge(.Left, toEdge: .Right, ofView: _margin2)
-        
-        
-        self.addSubview(_margin3)
-        _margin3.autoSetDimension(.Width, toSize: Grid.margin)
-        _margin3.autoPinEdge(.Left, toEdge: .Right, ofView: _column2)
-        _margin3.autoPinEdgeToSuperviewEdge(.Top)
-        _margin3.autoPinEdgeToSuperviewEdge(.Bottom)
-        
-        self.addSubview(_column3)
-        _column3.autoSetDimension(.Width, toSize: Grid.column)
-        _column3.autoPinEdgeToSuperviewEdge(.Top)
-        _column3.autoPinEdgeToSuperviewEdge(.Bottom)
-        _column3.autoPinEdge(.Left, toEdge: .Right, ofView: _margin3)
-        
-        self.addSubview(_margin4)
-        _margin4.autoSetDimension(.Width, toSize: Grid.margin)
-        _margin4.autoPinEdge(.Left, toEdge: .Right, ofView: _column3)
-        _margin4.autoPinEdgeToSuperviewEdge(.Top)
-        _margin4.autoPinEdgeToSuperviewEdge(.Bottom)
-        
-        self.addSubview(_column4)
-        _column4.autoSetDimension(.Width, toSize: Grid.column)
-        _column4.autoPinEdgeToSuperviewEdge(.Top)
-        _column4.autoPinEdgeToSuperviewEdge(.Bottom)
-        _column4.autoPinEdge(.Left, toEdge: .Right, ofView: _margin4)
-        
-        
-        self.addSubview(_margin5)
-        _margin5.autoSetDimension(.Width, toSize: Grid.margin)
-        _margin5.autoPinEdge(.Left, toEdge: .Right, ofView: _column4)
-        _margin5.autoPinEdgeToSuperviewEdge(.Top)
-        _margin5.autoPinEdgeToSuperviewEdge(.Bottom)
-        
-        
-    }
-    
-    private func _layoutStandardUI() {
-        self.addSubview(_leftGutter)
-        _leftGutter.autoSetDimension(.Width, toSize: Grid.gutter)
-        _leftGutter.autoPinEdgeToSuperviewEdge(.Top)
-        _leftGutter.autoPinEdgeToSuperviewEdge(.Bottom)
-        _leftGutter.autoPinEdgeToSuperviewEdge(.Left)
+        for idx in 0..<allGridViews {
+            //gutters
+            if idx == 0 || idx == allGridViews-1 {
+                let gutter = UIView(forAutoLayout: ())
+                gutter.backgroundColor = UIColor.red.withAlphaComponent(0.2)
+                self.addSubview(gutter)
+                gutter.autoSetDimension(.width, toSize: Grid.gutter)
+                gutter.autoPinEdge(toSuperviewEdge: .top)
+                gutter.autoPinEdge(toSuperviewEdge: .bottom)
+                if let previousView = previousView {
+                    gutter.autoPinEdge(.left, to: .right, of: previousView)
+                } else {
+                    gutter.autoPinEdge(toSuperviewEdge: .left)
+                }
+                
+                previousView = gutter
+                
+            } else if idx % 2 != 0  { //columns
+                let column = UIView(forAutoLayout: ())
+                column.backgroundColor = UIColor.green.withAlphaComponent(0.2)
+                self.addSubview(column)
+                column.autoSetDimension(.width, toSize: Grid.column)
+                column.autoPinEdge(toSuperviewEdge: .top)
+                column.autoPinEdge(toSuperviewEdge: .bottom)
+                if let previousView = previousView {
+                    column.autoPinEdge(.left, to: .right, of: previousView)
+                }
+                previousView = column
+                
+            } else { //margins
+                let margin = UIView(forAutoLayout: ())
+                margin.backgroundColor = UIColor.blue.withAlphaComponent(0.2)
+                self.addSubview(margin)
+                margin.autoSetDimension(.width, toSize: Grid.margin)
+                margin.autoPinEdge(toSuperviewEdge: .top)
+                margin.autoPinEdge(toSuperviewEdge: .bottom)
+                if let previousView = previousView {
+                    margin.autoPinEdge(.left, to: .right, of: previousView)
+                }
+                
+                previousView = margin
+            }
+        }
     }
     
 }
+
+

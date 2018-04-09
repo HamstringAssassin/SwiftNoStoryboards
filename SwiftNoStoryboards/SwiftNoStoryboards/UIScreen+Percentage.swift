@@ -10,6 +10,6 @@ import UIKit
 
 extension UIScreen {
     class func percentage(multiplier: CGFloat) -> CGFloat {
-        return CGFloat(Double(mainScreen().bounds.size.width * multiplier))
+        return CGFloat(Double(main.bounds.size.width * multiplier))
     }
 }

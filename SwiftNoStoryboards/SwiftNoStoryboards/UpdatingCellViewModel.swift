@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import ReactiveCocoa
+import ReactiveSwift
 import enum Result.NoError
 
 class UpdatingCellViewModel {
@@ -18,7 +18,9 @@ class UpdatingCellViewModel {
         self.title = title
     }
     
-    private var _tickProducer: SignalProducer<NSTimeInterval, Result.NoError> {
-        return timer(1.0, onScheduler: RACScheduler(priority: RACSchedulerPriorityHigh)).map{ _ in return 1 }
+    private var _tickProducer: SignalProducer<TimeInterval, Result.NoError> {
+        return SignalProducer.timer(interval:DispatchTimeInterval.seconds(1), on: QueueScheduler.main).map({ (date) in
+            return 1
+        })
     }
 }

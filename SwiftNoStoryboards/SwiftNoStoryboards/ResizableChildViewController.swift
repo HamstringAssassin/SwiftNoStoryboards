@@ -9,33 +9,33 @@
 import UIKit
 
 private extension Selector {
-    static let _collapseButtonPressed = #selector(ResizableChildViewController._collapseButonPressed(_:))
+    static let _collapseButtonPressed = #selector(ResizableChildViewController._collapseButtonPressed(sender:))
 }
 
 class ResizableChildViewController: UIViewController {
     
     private var _stackView: UIStackView! {
         didSet {
-            _stackView.axis = .Vertical
-            _stackView.distribution = .Fill
-            _stackView.alignment = .Fill
+            _stackView.axis = .vertical
+            _stackView.distribution = .fill
+            _stackView.alignment = .fill
             
         }
     }
     
     private var _collapseButton: UIButton! {
         didSet {
-            _collapseButton.addTarget(self, action: ._collapseButtonPressed, forControlEvents: .TouchUpInside)
-            _collapseButton.backgroundColor = UIColor.grayColor().colorWithAlphaComponent(0.5)
-            _collapseButton.setTitle("X", forState: .Normal)
+            _collapseButton.addTarget(self, action: ._collapseButtonPressed, for: .touchUpInside)
+            _collapseButton.backgroundColor = UIColor.gray.withAlphaComponent(0.5)
+            _collapseButton.setTitle("X", for: .normal)
         }
     }
     
     private var _title: UILabel! {
         didSet {
             _title.text = "A title"
-            _title.textAlignment = .Left
-            _title.backgroundColor = UIColor.yellowColor().colorWithAlphaComponent(0.5)
+            _title.textAlignment = .left
+            _title.backgroundColor = UIColor.yellow.withAlphaComponent(0.5)
         }
     }
     
@@ -43,8 +43,8 @@ class ResizableChildViewController: UIViewController {
         didSet {
             _body.numberOfLines = 0
             _body.text = "Some Body Text over\n more than one line"
-            _body.textAlignment = .Center
-            _body.backgroundColor = UIColor.redColor().colorWithAlphaComponent(0.5)
+            _body.textAlignment = .center
+            _body.backgroundColor = UIColor.red.withAlphaComponent(0.5)
         }
     }
     
@@ -81,44 +81,44 @@ class ResizableChildViewController: UIViewController {
         _stackView.addArrangedSubview(titleContainerView)
         
         titleContainerView.addSubview(_collapseButton)
-        _collapseButton.autoSetDimension(.Height, toSize: 24)
-        _collapseButton.autoSetDimension(.Width, toSize: 24)
-        _collapseButton.autoPinEdgeToSuperviewEdge(.Right)
-        _collapseButton.autoPinEdgeToSuperviewEdge(.Top)
+        _collapseButton.autoSetDimension(.height, toSize: 24)
+        _collapseButton.autoSetDimension(.width, toSize: 24)
+        _collapseButton.autoPinEdge(toSuperviewEdge: .right)
+        _collapseButton.autoPinEdge(toSuperviewEdge: .top)
         
         titleContainerView.addSubview(_title)
-        _title.autoPinEdgeToSuperviewEdge(.Left)
-        _title.autoPinEdge(.Right, toEdge: .Left, ofView: _collapseButton)
-        _title.autoAlignAxis(.Horizontal, toSameAxisOfView: _collapseButton)
+        _title.autoPinEdge(toSuperviewEdge: .left)
+        _title.autoPinEdge(.right, to: .left, of: _collapseButton)
+        _title.autoAlignAxis(.horizontal, toSameAxisOf: _collapseButton)
         
         let rulerView = UIView(forAutoLayout: ())
-        rulerView.backgroundColor = UIColor.grayColor()
+        rulerView.backgroundColor = UIColor.gray
         titleContainerView.addSubview(rulerView)
         
-        rulerView.autoSetDimension(.Height, toSize: 1)
-        rulerView.autoPinEdge(.Top, toEdge: .Bottom, ofView: _collapseButton, withOffset: 5)
-        rulerView.autoAlignAxisToSuperviewAxis(.Vertical)
-        rulerView.autoPinEdgeToSuperviewEdge(.Left)
-        rulerView.autoPinEdgeToSuperviewEdge(.Right)
+        rulerView.autoSetDimension(.height, toSize: 1)
+        rulerView.autoPinEdge(.top, to: .bottom, of: _collapseButton, withOffset: 5)
+        rulerView.autoAlignAxis(toSuperviewAxis: .vertical)
+        rulerView.autoPinEdge(toSuperviewEdge: .left)
+        rulerView.autoPinEdge(toSuperviewEdge: .right)
         
         _stackView.addArrangedSubview(_body)
-        _body.autoPinEdge(.Top, toEdge: .Bottom, ofView: rulerView, withOffset: 5)
-        _body.autoPinEdgeToSuperviewEdge(.Left)
-        _body.autoPinEdgeToSuperviewEdge(.Right)
+        _body.autoPinEdge(.top, to: .bottom, of: rulerView, withOffset: 5)
+        _body.autoPinEdge(toSuperviewEdge: .left)
+        _body.autoPinEdge(toSuperviewEdge: .right)
     }
     
     private func _skinUI() {
-        self.view.backgroundColor = UIColor.whiteColor()
+        self.view.backgroundColor = UIColor.white
     }
 }
 
 extension ResizableChildViewController {
-    @objc private func _collapseButonPressed(sender: UIButton) {
+    @objc fileprivate func _collapseButtonPressed(sender: UIButton) {
         print("Button Pressed")
         self._open = !_open
-        UIView.animateWithDuration(0.5) { [weak self] in
+        UIView.animate(withDuration: 0.5) { [weak self] in
             guard let welf = self else { return }
-            welf._body.hidden = !welf._open
+            welf._body.isHidden = !welf._open
         }
     }
 }

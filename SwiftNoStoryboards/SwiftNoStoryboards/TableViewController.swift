@@ -20,28 +20,27 @@ class TableViewController: UITableViewController {
     }
     
     func registerClassForCell() {
-        tableView.registerClass(UITableViewCell.classForCoder(), forCellReuseIdentifier: cellReuseIdentifier)
+        tableView.register(UITableViewCell.classForCoder(), forCellReuseIdentifier: cellReuseIdentifier)
     }
     
-    
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.names.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier) as UITableViewCell!
-        cell.textLabel?.text = names[indexPath.row]
-        return cell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier) as UITableViewCell!
+        cell?.textLabel?.text = names[indexPath.row]
+        return cell!
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailViewController = DetailViewController()
         detailViewController.name = names[indexPath.row]
         navigationController?.pushViewController(detailViewController, animated: true)
     }
+    
 }

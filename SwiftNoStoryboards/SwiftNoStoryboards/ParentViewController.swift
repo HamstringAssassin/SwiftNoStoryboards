@@ -19,19 +19,19 @@ class ParentViewController: UIViewController {
     
     private var _precedingContainerView: UIView! {
         didSet {
-            _precedingContainerView.backgroundColor = UIColor.blueColor().colorWithAlphaComponent(0.5)
+            _precedingContainerView.backgroundColor = UIColor.blue.withAlphaComponent(0.5)
         }
     }
     
     private var _containerView: UIView! {
         didSet {
-            _containerView.backgroundColor = UIColor.redColor().colorWithAlphaComponent(0.5)
+            _containerView.backgroundColor = UIColor.red.withAlphaComponent(0.5)
         }
     }
     
     private var _procedingContainerView: UIView! {
         didSet {
-            _procedingContainerView.backgroundColor = UIColor.blueColor().colorWithAlphaComponent(0.5)
+            _procedingContainerView.backgroundColor = UIColor.blue.withAlphaComponent(0.5)
         }
     }
     
@@ -44,7 +44,7 @@ class ParentViewController: UIViewController {
         _skinUI()
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         print("viewWillAppear")
     }
@@ -64,17 +64,17 @@ class ParentViewController: UIViewController {
         print("viewdidLayoutSubviews")
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         print("viewDidAppear")
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         print("viewWillDisappear")
     }
     
-    override func viewDidDisappear(animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         print("viewDidDisappear")
     }
@@ -92,56 +92,56 @@ class ParentViewController: UIViewController {
         _scrollView.autoPinEdgesToSuperviewEdges()
         let contentView = UIView(forAutoLayout: ())
         _scrollView.addSubview(contentView)
-        contentView.backgroundColor = UIColor.darkGrayColor().colorWithAlphaComponent(0.5)
+        contentView.backgroundColor = UIColor.darkGray.withAlphaComponent(0.5)
         contentView.autoPinEdgesToSuperviewEdges()
-        NSLayoutConstraint.autoSetPriority(UILayoutPriorityDefaultLow) { 
-            contentView.autoSetDimension(.Height, toSize: view.frame.height)
+        NSLayoutConstraint.autoSetPriority(UILayoutPriority.defaultLow) {
+            contentView.autoSetDimension(.height, toSize: view.frame.height)
         }
         
-        contentView.autoSetDimension(.Width, toSize: view.frame.width)
+        contentView.autoSetDimension(.width, toSize: view.frame.width)
         
         contentView.addSubview(_precedingContainerView)
-        _precedingContainerView.autoSetDimension(.Height, toSize: 10)//, relation: .GreaterThanOrEqual)
-        _precedingContainerView.autoSetDimension(.Width, toSize: 10)//, relation: .GreaterThanOrEqual)
-        _precedingContainerView.autoAlignAxisToSuperviewAxis(.Vertical)
-        _precedingContainerView.autoPinEdge(.Top, toEdge: .Top, ofView: contentView, withOffset: 10)
+        _precedingContainerView.autoSetDimension(.height, toSize: 10)//, relation: .GreaterThanOrEqual)
+        _precedingContainerView.autoSetDimension(.width, toSize: 10)//, relation: .GreaterThanOrEqual)
+        _precedingContainerView.autoAlignAxis(toSuperviewAxis: .vertical)
+        _precedingContainerView.autoPinEdge(.top, to: .top, of: contentView, withOffset: 10)
         
         contentView.addSubview(_containerView)
-        _containerView.autoPinEdge(.Top, toEdge: .Bottom, ofView: _precedingContainerView, withOffset: 10)
-        NSLayoutConstraint.autoSetPriority(UILayoutPriorityDefaultLow) { 
-            _containerView.autoSetDimension(.Height, toSize: 10)//, relation: .GreaterThanOrEqual)
-            _containerView.autoSetDimension(.Width, toSize: 10)//, relation: .GreaterThanOrEqual)
+        _containerView.autoPinEdge(.top, to: .bottom, of: _precedingContainerView, withOffset: 10)
+        NSLayoutConstraint.autoSetPriority(UILayoutPriority.defaultLow) { 
+            _containerView.autoSetDimension(.height, toSize: 10)//, relation: .GreaterThanOrEqual)
+            _containerView.autoSetDimension(.width, toSize: 10)//, relation: .GreaterThanOrEqual)
         }
         
-        _containerView.autoAlignAxisToSuperviewAxis(.Vertical)
+        _containerView.autoAlignAxis(toSuperviewAxis: .vertical)
         
         contentView.addSubview(_procedingContainerView)
-        _procedingContainerView.autoSetDimension(.Height, toSize: 10)//, relation: .GreaterThanOrEqual)
-        _procedingContainerView.autoSetDimension(.Width, toSize: 10)//, relation: .GreaterThanOrEqual)
-        _procedingContainerView.autoAlignAxisToSuperviewAxis(.Vertical)
-        _procedingContainerView.autoPinEdge(.Bottom, toEdge: .Bottom, ofView: contentView, withOffset: -10)
+        _procedingContainerView.autoSetDimension(.height, toSize: 10)//, relation: .GreaterThanOrEqual)
+        _procedingContainerView.autoSetDimension(.width, toSize: 10)//, relation: .GreaterThanOrEqual)
+        _procedingContainerView.autoAlignAxis(toSuperviewAxis: .vertical)
+        _procedingContainerView.autoPinEdge(.bottom, to: .bottom, of: contentView, withOffset: -10)
         
-        _containerView.autoPinEdge(.Bottom, toEdge: .Top, ofView: _procedingContainerView, withOffset: -10)
+        _containerView.autoPinEdge(.bottom, to: .top, of: _procedingContainerView, withOffset: -10)
         
     }
     
     private func _updateContainerView() {
         let childControllerView = ChildViewController()
-        self.embedViewController(childControllerView, inView: _precedingContainerView)
+        self.embedViewController(viewController: childControllerView, inView: _precedingContainerView)
     }
     
     private func _updatePreceedingContainerView() {
         let childControllerView = ChildViewController()
-        self.embedViewController(childControllerView, inView: _containerView)
+        self.embedViewController(viewController: childControllerView, inView: _containerView)
     }
     
     private func _updateProceedingContainerView() {
         let childControllerView = ChildViewController()
-        self.embedViewController(childControllerView, inView: _procedingContainerView)
+        self.embedViewController(viewController: childControllerView, inView: _procedingContainerView)
     }
     
     private func _skinUI() {
-        self.view.backgroundColor = UIColor.whiteColor()
+        self.view.backgroundColor = UIColor.white
     }
 }
 
@@ -151,7 +151,7 @@ extension UIViewController {
         self.addChildViewController(viewController)
         inView.addSubview(viewController.view)
         viewController.view.autoPinEdgesToSuperviewEdges()
-        viewController.didMoveToParentViewController(self)
+        viewController.didMove(toParentViewController: self)
     }
 }
 

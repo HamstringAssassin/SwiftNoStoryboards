@@ -7,9 +7,8 @@ target 'SwiftNoStoryboards' do
 
   # Pods for SwiftNoStoryboards
   pod 'PureLayout'
-  pod 'ReactiveCocoa', '~>4.2.2'
-  pod 'XCGLogger', '~> 3.6.0'
-  pod 'Rex', :git => 'https://github.com/RACCommunity/Rex', :tag => '0.12.0'
+  pod 'ReactiveSwift', '~>3.1.0'
+  pod 'XCGLogger', '~> 6.0.2'
 
   target 'SwiftNoStoryboardsTests' do
     inherit! :search_paths

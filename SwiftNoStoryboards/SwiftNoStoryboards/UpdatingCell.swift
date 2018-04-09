@@ -7,8 +7,7 @@
 //
 
 import UIKit
-import ReactiveCocoa
-import Rex
+import ReactiveSwift
 
 class UpdatingCell: UICollectionViewCell {
     
@@ -22,7 +21,7 @@ class UpdatingCell: UICollectionViewCell {
     
     var viewModel: UpdatingCellViewModel? {
         didSet {
-            _updateUI(viewModel)
+            _updateUI(viewModel: viewModel)
         }
     }
     
@@ -30,7 +29,7 @@ class UpdatingCell: UICollectionViewCell {
         super.init(frame: frame)
         _createUI()
         _layoutUI()
-        _updateUI(viewModel)
+        _updateUI(viewModel: viewModel)
 //        _bindUI(viewModel)
     }
     
@@ -43,7 +42,7 @@ class UpdatingCell: UICollectionViewCell {
     }
     
     private func _layoutUI() {
-        self.contentView.autoSetDimension(.Width, toSize: UIScreen.percentage(0.8))
+        self.contentView.autoSetDimension(.width, toSize: UIScreen.percentage(multiplier: 0.8))
         
         self.contentView.addSubview(_textLabel)
         _textLabel.autoPinEdgesToSuperviewEdges()

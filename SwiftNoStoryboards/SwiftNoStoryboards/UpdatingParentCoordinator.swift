@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-import ReactiveCocoa
+import ReactiveSwift
 import enum Result.NoError
 
 protocol UpdatingParentCoordinatorDelegate: class {
@@ -33,7 +33,9 @@ class UpdatingParentCoordinator {
     }
     
     private var _tickProducer: SignalProducer<Int, Result.NoError> {
-        return timer(1.0, onScheduler: RACScheduler(priority: RACSchedulerPriorityHigh)).map{ _ in return 1 }
+        return SignalProducer.timer(interval: DispatchTimeInterval.seconds(1), on: QueueScheduler.main ).map({ (date) in
+            return 1
+        })
     }
     
     
@@ -53,8 +55,8 @@ extension UpdatingParentCoordinator: UpdatingParentViewControllerDelegate {
             return (self?.numberOfFirstViewModels.value)! + $0
         }
         
-        let viewModelProducer = numberOfFirstViewModels.producer.flatMap(.Latest) { (value) -> SignalProducer<UpdatingFirstChildViewModel, Result.NoError> in
-            return self.updatingFirstChildViewModelProducer(value)
+        let viewModelProducer = numberOfFirstViewModels.producer.flatMap(.latest) { (value) -> SignalProducer<UpdatingFirstChildViewModel, Result.NoError> in
+            return self.updatingFirstChildViewModelProducer(value: value)
         }
         
 //        let viewModel = UpdatingFirstChildViewModel(numberOfCells: 10)
@@ -62,7 +64,7 @@ extension UpdatingParentCoordinator: UpdatingParentViewControllerDelegate {
 //        _tickProducer.sampleWith(SignalProducer<UpdatingFirstChildViewModel Result.NoError> )
         
 //        firstUpdatingViewController.viewModel = viewModel
-        firstUpdatingViewController.bindViewModel(viewModelProducer)
+        firstUpdatingViewController.bindViewModel(producer: viewModelProducer)
         
         return firstUpdatingViewController
     }

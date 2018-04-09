@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import ReactiveCocoa
+import ReactiveSwift
 import enum Result.NoError
 
 class UpdatingFirstChildViewController: UIViewController {
@@ -16,16 +16,16 @@ class UpdatingFirstChildViewController: UIViewController {
     
     private var _collectionView: UICollectionView! {
         didSet {
-            _collectionView.backgroundColor = UIColor.clearColor()
+            _collectionView.backgroundColor = UIColor.clear
             _collectionView.dataSource = self
             _collectionView.delegate = self
             
-            _collectionView.registerClass(UpdatingCell.self, forCellWithReuseIdentifier: "cell")
+            _collectionView.register(UpdatingCell.self, forCellWithReuseIdentifier: "cell")
             
             let flow = _collectionView.collectionViewLayout as! UICollectionViewFlowLayout
             
-            flow.scrollDirection = .Vertical
-            flow.estimatedItemSize = CGSize(width: UIScreen.percentage(0.8), height: 10)
+            flow.scrollDirection = .vertical
+            flow.estimatedItemSize = CGSize(width: UIScreen.percentage(multiplier: 0.8), height: 10)
             
         }
     }
@@ -33,9 +33,9 @@ class UpdatingFirstChildViewController: UIViewController {
     private var _viewModelProperty = MutableProperty<UpdatingFirstChildViewModel?>(nil)
     
     func bindViewModel(producer: SignalProducer<UpdatingFirstChildViewModel, Result.NoError>) {
-        _viewModelProperty <~ producer.map { $0 }.observeOn(UIScheduler())
-        _viewModelProperty.producer.startWithNext { (viewModel) in
-            self._updateUI(viewModel)
+        _viewModelProperty <~ producer.map { $0 }.observe(on: UIScheduler())
+        _viewModelProperty.producer.startWithValues { (viewModel) in
+            self._updateUI(viewModel: viewModel)
         }
     }
     
@@ -48,13 +48,13 @@ class UpdatingFirstChildViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         _layoutUI()
-        Log("")
+        Log(string: "")
         _skinUI()
     }
     
     override func updateViewConstraints() {
-        let value = _collectionView.collectionViewLayout.collectionViewContentSize().height
-        Log("\(value)")
+        let value = _collectionView.collectionViewLayout.collectionViewContentSize.height
+        Log(string: "\(value)")
         collectionViewHeightConstraint?.constant = value
         
         super.updateViewConstraints()
@@ -62,7 +62,7 @@ class UpdatingFirstChildViewController: UIViewController {
     
     private func _createUI() {
         self.view = UIView()
-        self._collectionView = UICollectionView(frame: CGRectZero, collectionViewLayout: UICollectionViewFlowLayout())
+        self._collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout())
     }
     
     private func _addUI() {
@@ -70,12 +70,12 @@ class UpdatingFirstChildViewController: UIViewController {
     }
     
     private func _layoutUI() {
-        _collectionView.autoPinEdgeToSuperviewEdge(.Top)
-        _collectionView.autoPinEdgeToSuperviewEdge(.Bottom)
-        _collectionView.autoAlignAxisToSuperviewAxis(.Vertical)
-        _collectionView.autoSetDimension(.Width, toSize: UIScreen.percentage(1.0))
+        _collectionView.autoPinEdge(toSuperviewEdge: .top)
+        _collectionView.autoPinEdge(toSuperviewEdge: .bottom)
+        _collectionView.autoAlignAxis(toSuperviewAxis: .vertical)
+        _collectionView.autoSetDimension(.width, toSize: UIScreen.percentage(multiplier: 1.0))
         
-        collectionViewHeightConstraint = _collectionView.autoSetDimension(.Height, toSize: 10, relation: .GreaterThanOrEqual)
+        collectionViewHeightConstraint = _collectionView.autoSetDimension(.height, toSize: 10, relation: .greaterThanOrEqual)
         
         self.view.layoutIfNeeded()
     }
@@ -84,7 +84,7 @@ class UpdatingFirstChildViewController: UIViewController {
     }
     
     private func _updateUI(viewModel: UpdatingFirstChildViewModel?) {
-        guard isViewLoaded() else { return }
+        guard isViewLoaded else { return }
         _collectionView.reloadData()
         self.updateViewConstraints()
     }
@@ -95,56 +95,56 @@ extension UpdatingFirstChildViewController: UICollectionViewDataSource, UICollec
         return 1
     }
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return _viewModelProperty.value?.dataSource.count ?? 1
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! UpdatingCell
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! UpdatingCell
         cell.viewModel = _viewModelProperty.value?.dataSource[indexPath.row]
         return cell
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return _sizeForItemAtIndexPath(indexPath)
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return _sizeForItemAtIndexPath(indexPath: indexPath)
     }
     
-    private func _sizeForItemAtIndexPath(indexPath: NSIndexPath) -> CGSize{
+    private func _sizeForItemAtIndexPath(indexPath: IndexPath) -> CGSize{
         let prototype = UpdatingCell.prototype
-        let size = (prototype as UICollectionViewCell).systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
+        let size = (prototype as UICollectionViewCell).systemLayoutSizeFitting(UILayoutFittingCompressedSize)
         return size
     }
 }
 
 
 extension UpdatingFirstChildViewController {
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        Log("")
+        Log(string: "")
     }
 
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        Log("")
+        Log(string: "")
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        Log("")
+        Log(string: "")
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        Log("")
+        Log(string: "")
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        Log("")
+        Log(string: "")
     }
     
-    override func viewDidDisappear(animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        Log("")
+        Log(string: "")
     }
 }

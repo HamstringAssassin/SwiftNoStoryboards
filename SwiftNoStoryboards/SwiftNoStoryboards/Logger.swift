@@ -10,9 +10,9 @@ import Foundation
 import XCGLogger
 
 class Logger {
-    let log: XCGLogger = XCGLogger.defaultInstance()
+    let log: XCGLogger = XCGLogger.default
 }
 
-public func Log(string: String, level: XCGLogger.LogLevel = .Debug, functionName: StaticString = #function,  fileName: StaticString = #file, lineNumber: Int = #line){
-    Logger().log.logln(string, logLevel: level, functionName: functionName, fileName: fileName, lineNumber: lineNumber)
+public func Log(string: String, level: XCGLogger.Level = .debug, functionName: StaticString = #function,  fileName: StaticString = #file, lineNumber: Int = #line){
+    Logger().log.logln(string, level: level, functionName: functionName, fileName: fileName, lineNumber: lineNumber)
 }

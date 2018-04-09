@@ -1,35 +1,28 @@
 PODS:
+  - ObjcExceptionBridging (1.0.1):
+    - ObjcExceptionBridging/ObjcExceptionBridging (= 1.0.1)
+  - ObjcExceptionBridging/ObjcExceptionBridging (1.0.1)
   - PureLayout (3.0.2)
-  - ReactiveCocoa (4.2.2):
-    - Result (~> 2.0)
-  - Result (2.1.3)
-  - Rex (0.10.0):
-    - ReactiveCocoa (~> 4.1)
-  - XCGLogger (3.6.0)
+  - ReactiveSwift (3.1.0):
+    - Result (~> 3.2)
+  - Result (3.2.4)
+  - XCGLogger (6.0.2):
+    - XCGLogger/Core (= 6.0.2)
+  - XCGLogger/Core (6.0.2):
+    - ObjcExceptionBridging
 
 DEPENDENCIES:
   - PureLayout
-  - ReactiveCocoa (~> 4.2.2)
-  - Rex (from `https://github.com/RACCommunity/Rex`, tag `0.12.0`)
-  - XCGLogger (~> 3.6.0)
-
-EXTERNAL SOURCES:
-  Rex:
-    :git: https://github.com/RACCommunity/Rex
-    :tag: 0.12.0
-
-CHECKOUT OPTIONS:
-  Rex:
-    :git: https://github.com/RACCommunity/Rex
-    :tag: 0.12.0
+  - ReactiveSwift (~> 3.1.0)
+  - XCGLogger (~> 6.0.2)
 
 SPEC CHECKSUMS:
+  ObjcExceptionBridging: c30e00eb3700467e695faeea30e26e18bd445001
   PureLayout: 4d550abe49a94f24c2808b9b95db9131685fe4cd
-  ReactiveCocoa: 72263e7ac0770c274617ccd345e01049d0ca38ae
-  Result: 18e1a7597fbcca5923c565b40a25a98afafdee02
-  Rex: a6707f736387aa7a0d71f72947a33843f9e16079
-  XCGLogger: 53a3efe22e228e8b25ed8184bc074c2b06d48490
+  ReactiveSwift: 5b26d2e988fe0eed2daf48c4054d1de74db50184
+  Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
+  XCGLogger: c9601cae9a8912de34a58666ba931ed3d624dd31
 
-PODFILE CHECKSUM: e599b25e0845fc62971b8738fb19681926c35c58
+PODFILE CHECKSUM: 91556645b17021e0d1e2a43eca72e4673d15c7d9
 
-COCOAPODS: 1.1.1
+COCOAPODS: 1.2.0
