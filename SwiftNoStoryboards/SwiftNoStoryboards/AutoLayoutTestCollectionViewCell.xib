@@ -1,10 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -114,7 +115,7 @@
                 <constraint firstAttribute="trailing" secondItem="yMD-OW-45P" secondAttribute="trailing" id="wN8-Mz-rYh"/>
             </constraints>
             <size key="customSize" width="521" height="186"/>
-            <point key="canvasLocation" x="-598" y="-33"/>
+            <point key="canvasLocation" x="-450" y="-156"/>
         </collectionViewCell>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="u5F-DJ-JBw" customClass="AutoLayoutTestCollectionViewCell" customModule="SwiftNoStoryboards" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="384" height="126"/>
@@ -156,25 +157,25 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="asdfasdfasdfasdfsdasdfsadfsadfasdfs dahsdkjhasd" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S45-ZF-eja" userLabel="name">
-                                <rect key="frame" x="52" y="22" width="296" height="41"/>
+                                <rect key="frame" x="52" y="22" width="295.5" height="41"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tsf-fb-qtK" userLabel="prep">
-                                <rect key="frame" x="52" y="63" width="42" height="21"/>
+                                <rect key="frame" x="52" y="63" width="42" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="751" text="13" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IFm-nu-qqc" userLabel="amount">
-                                <rect key="frame" x="348" y="42" width="21" height="21"/>
+                                <rect key="frame" x="347.5" y="42.5" width="21.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sdflkjdsaf" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HHZ-Xi-6gc" userLabel="approx">
-                                <rect key="frame" x="94" y="63" width="275" height="21"/>
+                                <rect key="frame" x="94" y="63" width="275" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -253,7 +254,7 @@
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Zl-rC-gVS">
-                                <rect key="frame" x="52" y="48.5" width="42.5" height="20"/>
+                                <rect key="frame" x="52" y="47.5" width="42.5" height="20"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mgn-6D-w5S" userLabel="name">
                                         <rect key="frame" x="0.0" y="0.0" width="42.5" height="20.5"/>
@@ -333,6 +334,28 @@
             </constraints>
             <size key="customSize" width="362" height="117"/>
             <point key="canvasLocation" x="-654" y="404.5"/>
+        </collectionViewCell>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="LGb-Tb-ToY">
+            <rect key="frame" x="0.0" y="0.0" width="397" height="106"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                <rect key="frame" x="0.0" y="0.0" width="397" height="106"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zdu-bn-bKh">
+                        <rect key="frame" x="0.0" y="0.0" width="397" height="106"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="zdu-bn-bKh" secondAttribute="bottom" id="1Ea-tI-S9j"/>
+                <constraint firstAttribute="trailing" secondItem="zdu-bn-bKh" secondAttribute="trailing" id="1Q0-UK-Axj"/>
+                <constraint firstItem="zdu-bn-bKh" firstAttribute="top" secondItem="LGb-Tb-ToY" secondAttribute="top" id="U4o-ck-4I1"/>
+                <constraint firstItem="zdu-bn-bKh" firstAttribute="leading" secondItem="LGb-Tb-ToY" secondAttribute="leading" id="ZxR-Gx-ETk"/>
+            </constraints>
+            <size key="customSize" width="397" height="106"/>
+            <point key="canvasLocation" x="-637.5" y="611"/>
         </collectionViewCell>
     </objects>
 </document>

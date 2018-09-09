@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F79EA4F2121DF6B00BCD79B /* ArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F79EA4E2121DF6B00BCD79B /* ArticleViewController.swift */; };
+		0F79EA512121DF9600BCD79B /* QuestionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F79EA502121DF9600BCD79B /* QuestionCollectionViewCell.swift */; };
+		0F79EA532121F28600BCD79B /* ArticleViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F79EA522121F28600BCD79B /* ArticleViewFlowLayout.swift */; };
 		1E7B19123698C0BA6DB58A00 /* Pods_SwiftNoStoryboardsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 358B932F01B617EC79CEE0C8 /* Pods_SwiftNoStoryboardsTests.framework */; };
 		3C93115D9EA5192F3A085ECE /* Pods_SwiftNoStoryboardsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B25839D4A80FABED73858E46 /* Pods_SwiftNoStoryboardsUITests.framework */; };
 		600522101FCEDBE200969B00 /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6005220F1FCEDBE200969B00 /* GridView.swift */; };
@@ -61,6 +64,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0F79EA4E2121DF6B00BCD79B /* ArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleViewController.swift; sourceTree = "<group>"; };
+		0F79EA502121DF9600BCD79B /* QuestionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionCollectionViewCell.swift; sourceTree = "<group>"; };
+		0F79EA522121F28600BCD79B /* ArticleViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleViewFlowLayout.swift; sourceTree = "<group>"; };
 		358B932F01B617EC79CEE0C8 /* Pods_SwiftNoStoryboardsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftNoStoryboardsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		39D430C193660E53F724625D /* Pods-SwiftNoStoryboardsUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftNoStoryboardsUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftNoStoryboardsUITests/Pods-SwiftNoStoryboardsUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		6001C15798324868C6C45BF9 /* Pods-SwiftNoStoryboardsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftNoStoryboardsTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftNoStoryboardsTests/Pods-SwiftNoStoryboardsTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -137,6 +143,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0F79EA4D2121DF1F00BCD79B /* CollectionViewFlowLayout */ = {
+			isa = PBXGroup;
+			children = (
+				0F79EA4E2121DF6B00BCD79B /* ArticleViewController.swift */,
+				0F79EA502121DF9600BCD79B /* QuestionCollectionViewCell.swift */,
+				0F79EA522121F28600BCD79B /* ArticleViewFlowLayout.swift */,
+			);
+			name = CollectionViewFlowLayout;
+			sourceTree = "<group>";
+		};
 		18CC490025C018E80F64A193 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -221,6 +237,7 @@
 		6029EDCD1CD3D98500637B2C /* SwiftNoStoryboards */ = {
 			isa = PBXGroup;
 			children = (
+				0F79EA4D2121DF1F00BCD79B /* CollectionViewFlowLayout */,
 				6005220E1FCEDBC700969B00 /* Grid */,
 				609CCEB21F99EC8B00F6C9EE /* Utilities */,
 				6011D9AB1F99041300931775 /* Updating Child CollectionViews */,
@@ -640,9 +657,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F79EA4F2121DF6B00BCD79B /* ArticleViewController.swift in Sources */,
 				609CCEC81F9E46DF00F6C9EE /* UpdatingParentCoordinator.swift in Sources */,
 				609CCEB71F9A052200F6C9EE /* UpdatingCell.swift in Sources */,
 				6011D9AF1F99045F00931775 /* UpdatingFirstChildViewController.swift in Sources */,
+				0F79EA512121DF9600BCD79B /* QuestionCollectionViewCell.swift in Sources */,
 				6029EDD11CD3D98500637B2C /* ViewController.swift in Sources */,
 				6084FBA11F877A6B00B32201 /* ResizableParentViewController.swift in Sources */,
 				6045FD921F6D765500355D90 /* ParentViewController.swift in Sources */,
@@ -651,6 +670,7 @@
 				6029EDCF1CD3D98500637B2C /* AppDelegate.swift in Sources */,
 				6084FBA31F877A8B00B32201 /* ResizableChildViewController.swift in Sources */,
 				600522101FCEDBE200969B00 /* GridView.swift in Sources */,
+				0F79EA532121F28600BCD79B /* ArticleViewFlowLayout.swift in Sources */,
 				60A5D9EB1F828E72000D8AB9 /* AutoLayoutTestViewController.swift in Sources */,
 				602157DE1CD6873200D76E2C /* DetailViewController.swift in Sources */,
 				609CCEC01F9E2B5400F6C9EE /* UpdatingSecondChildViewModel.swift in Sources */,
